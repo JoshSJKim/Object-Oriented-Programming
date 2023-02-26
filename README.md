@@ -123,12 +123,40 @@ function Bird(name, color) {    // This is the constructor with two parameters
 let cardinal = new Bird("Cardi", "red");
 ```
 
-It will create the following
+- cardinal will have the following properties
+- 
+```js
+cardinal.name;
+cardinal.color;
+cardinal.numLegs;
+```
+
+## Verify an Object's Constructor with instanceof
+
+- When a constructor function creates an object, the object is called an 'instance' of the constructor.
+- Use the ```instanceof``` operator to verify whether an object was created with constructor.
+- It will return true or false based on the comparison result.
 
 ```js
-var cardinal = {
-    name: "Bruce",
-    color: "red",
+let Bird = function (name, color) {
+    this.name = name;
+    this.color = color;
+    this.numLegs = 2;
+}
+
+let crow = new Bird("Alexis", "black");
+
+crow instanceof Bird; // true
+```
+
+- If an object is created without using a constructor, ```instanceof``` will return false.
+
+```js
+let canary = {
+    name: "Mildred",
+    color: "Yellow",
     numLegs: 2
 };
+
+canary instanceof Bird; // false
 ```
