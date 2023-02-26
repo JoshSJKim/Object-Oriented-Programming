@@ -103,3 +103,32 @@ blueBird.numLegs;
 blueBird.color = "blue";
 ```
 
+## Extend Constructors to Receive Arguments
+
+- Using a constructor to create objects is useful.
+- But it becomes inefficient if you have to create an object and define each property value manually.
+- You can pass parameters to the constructor function at the time of creating the object to increase efficiency and manageability.
+
+```js
+function Bird(name, color) {    // This is the constructor with two parameters
+    this.name = name;           // first parameter will define the value of name  
+    this.color = color;         // second parameter will define the value of color
+    this.numLegs = 2;           // numLegs are the same for all birds
+}
+```
+
+- Now, create a new bird object
+
+```js
+let cardinal = new Bird("Cardi", "red");
+```
+
+It will create the following
+
+```js
+var cardinal = {
+    name: "Bruce",
+    color: "red",
+    numLegs: 2
+};
+```
