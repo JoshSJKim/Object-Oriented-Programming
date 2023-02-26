@@ -228,3 +228,26 @@ for (let property in beagle) {  // iterate through the beagle object and look fo
 console.log(ownProps);          // ["name"]
 console.log(prototypeProps);    // ["numLegs"]
 ```
+
+## Understand the Constructor Property
+
+- The ```constructor``` property is a reference to the constructor function that created the instance.
+- The advantage of the ```constructor``` property is that it's possible to check for this property to find out what kind of object it is.
+
+```js
+function Dog(name) {
+    this.name = name;
+}
+
+function joinDogFraternity(candidate) {
+    if (candidate.constructor === Dog) {    // If object 'candidate' was created using the 'Dog' constructor function
+        return true;    
+    } else {
+        return false;
+    }
+}
+```
+
+- Note that the ```constructor``` property can be overwritten
+- It's generally better to use the ```instanceof``` method to check the type of an object.
+
