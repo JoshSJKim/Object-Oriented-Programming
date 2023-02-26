@@ -251,3 +251,33 @@ function joinDogFraternity(candidate) {
 - Note that the ```constructor``` property can be overwritten
 - It's generally better to use the ```instanceof``` method to check the type of an object.
 
+## Change the Prototype to a New Object
+
+- It can also become inefficient to add properties to ```prototype``` individually.
+
+```js
+Bird.prototype.numLegs = 2;
+
+Bird.prototype.eat = function() {
+    console.log("nom nom nom");
+}
+
+Bird.prototype.describe = function() {
+    console.log("My name is " + this.name);
+}
+```
+
+- There is a more efficient way to set the ```prototype``` to a new object that already contains the properties.
+
+```js
+Bird.prototype = {
+    numLegs: 2,
+    eat: function() {
+        console.log("nom nom nom");
+    },
+    describe: function() {
+        console.log("My name is " + this.name);
+    }
+};
+```
+
