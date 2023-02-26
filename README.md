@@ -198,3 +198,33 @@ Bird.prototype.numLegs = 2;
 
 - Now, 'numLegs' property will be assigned to all instances of 'Bird'.
 - This applies to all instances of 'Bird' only.
+
+## Iterate over all properties
+
+- There are two kinds of properties
+  - own property - defined directly on the object instance itself
+  - prototype property - defined on the prototype
+
+```js
+function Dog(name) {    // constructor function
+    this.name = name;   // own property
+}
+
+Dog.prototype.numLegs = 4;  // prototype property
+
+let beagle = new Dog("Snoopy"); // create a new instance object 'beagle'
+
+let ownProps = [];              // initialize new variables with empty arrays
+let prototypeProps = [];
+
+for (let property in beagle) {  // iterate through the beagle object and look for properties
+    if (beagle.hasOwnProperty(property)) {  // if object 'beagle' has its own property 'property',
+        ownProps.push(property);            // push that property to new array 'ownProps'
+    } else {
+        prototypeProps.push(property);      // any properties other than 'own property' (i.e. prototype property)
+    }                                       // push those properties to new array 'prototypeProps'
+}
+
+console.log(ownProps);          // ["name"]
+console.log(prototypeProps);    // ["numLegs"]
+```
