@@ -185,3 +185,16 @@ for (let property in canary) {
 
 console.log(ownProps);  // ['name', 'numLegs']
 ```
+
+## Use Prototype Properties to Reduce Duplicate Code
+
+- If there is a static property throughout instance objects created using the constructor function, (ex. numLegs = 2 for bird constructor)
+  - it's not efficient to have numerous duplicate properties.
+- You can create ```prototype``` of ```bird``` that can be shared among ALL instances of ```Bird```.
+
+```js
+Bird.prototype.numLegs = 2;
+```
+
+- Now, 'numLegs' property will be assigned to all instances of 'Bird'.
+- This applies to all instances of 'Bird' only.
