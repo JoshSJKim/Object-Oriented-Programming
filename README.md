@@ -124,7 +124,8 @@ let cardinal = new Bird("Cardi", "red");
 ```
 
 - cardinal will have the following properties
-- 
+-
+
 ```js
 cardinal.name;
 cardinal.color;
@@ -159,4 +160,28 @@ let canary = {
 };
 
 canary instanceof Bird; // false
+```
+
+## Understand Own Properties
+
+- Properties such as 'name' and 'color' specified in an object are called 'own properties'.
+- Own Properties are defined directly on the instance object.
+- All instance objects each have its own copies of 'own properties'.
+- You can extract all 'own properties' of an object and return it in an array.
+
+```js
+function Bird(name) {
+    this.name = name;
+    this.numLegs = 2;
+}
+
+let canary = new Bird("Tweety");
+let ownProps = [];
+for (let property in canary) {
+    if (canary.hasOwnProperty(property)) {
+        ownProps.push(property);
+    }
+}
+
+console.log(ownProps);  // ['name', 'numLegs']
 ```
