@@ -312,7 +312,7 @@ function Bird(name) {
     this.name = name;
 }
 
-let duck = new Bird("Donale");
+let duck = new Bird("Donald");
 ```
 
 - 'duck' inherits its ```prototype``` from the 'bird' constructor function.
@@ -470,4 +470,42 @@ let duck = new Bird("Donald");
 
 duck.eat(); // nom nom nom
 console.log(duck instanceof Animal); // true
+```
+
+## Reset an Inherited Constructor Property
+
+- when an object inherits its ```prototype``` from another object, it also inherits the constructor property
+
+```js
+function Bird() { }
+
+let duck = new Bird();
+console.log(duck.constructor); // [Function: Bird]
+```
+
+- The example above shows an instance of the 'Bird' constructor function, which created a 'duck' object.
+- Calling duck.constructor will display that the object was created using the 'Bird' constructor function.
+
+```js
+function Bird() { }
+
+Bird.prototype = Object.create(Animal.prototype); // This will make Bird.prototype inherit the attributes of Animal.prototype
+
+let duck = new Bird();
+console.log(duck.constructor); // [Function: Animal]
+```
+
+- After the 'Bird.prototype' inherits 'Animal.prototype', it also inherits its constructor property.
+- Now, when you call 'duck.constructor', it will display that the constructor is 'Animal', when it fact it was created using the 'Bird' constructor.
+- To fix this, you can manually set the constructor property of 'Bird' to the 'Bird' object.
+
+```js
+function Bird() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+
+Bird.prototype.constructor = Bird; // This will reset the constructor of Bird.prototype to 'Bird'
+
+let duck = new Bird();
+console.log(duck.constructor); // [Function: Bird]
 ```
