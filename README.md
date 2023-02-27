@@ -322,4 +322,58 @@ let duck = new Bird("Donale");
 Bird.prototype.isPrototypeOf(duck); // This would return 'true'
 ```
 
-## 
+## Understand the Prototype Chain
+
+- In JavaScript, every object has an internal property called [[Prototype]] that points to another object, called its prototype.
+- The prototype is a blueprint that defines properties and methods that the object can access and use.
+- When you access a property or method on an object, JavaScript first looks at the object itself to see if it has the property or method.
+- If it does not find it, it looks at the object's prototype, and so on up the prototype chain, until it reaches the root object Object.prototype.
+
+- The prototype chain is established when you create an object using a constructor function or using Object.create().
+- The prototype of an object created using a constructor function is set to the constructor function's prototype property.
+- The prototype of an object created using Object.create() is set to the object passed as an argument to Object.create().
+
+```js
+function Animal() {
+}
+
+Animal.prototype.speak = function() {
+  console.log('The animal speaks.');
+};
+
+function Dog() {
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+
+Dog.prototype.bark = function() {
+  console.log('The dog barks.');
+};
+
+const myDog = new Dog();
+myDog.bark(); // "The dog barks."
+myDog.speak(); // "The animal speaks."
+```
+
+- In this example, we create two constructor functions, Animal and Dog.
+- We define a method called ```speak``` on the Animal prototype and a method called ```bark``` on the Dog prototype.
+- We use Object.create() to set the Dog prototype to an instance of the Animal prototype, so that myDog inherits from Animal.prototype.
+- We create a new instance of Dog called myDog and call its bark and speak methods.
+
+- When we call myDog.bark(), JavaScript first looks for the bark method on myDog and finds it on Dog.prototype.
+- When we call myDog.speak(), JavaScript first looks for the speak method on myDog and does not find it.
+- It then looks for speak on Dog.prototype, does not find it, and looks on Animal.prototype, where it finds it and executes it.
+
+Here's another prototype chain
+
+```js
+function Dog(name) {
+    this.name = name;
+}
+
+let beagle = new Dog("Snoopy"); // new instance object 'beagle' is created using the constructor function 'Dog'
+
+Dog.prototype.isPrototypeOf(beagle); // true. 'beagle' is a subtype of Dog.prototype
+
+Object.prototype.isPrototypeOf(Dog.prototype); // true Object.prototype is the supertype of both Dog.prototype and object 'beagle'
+```
