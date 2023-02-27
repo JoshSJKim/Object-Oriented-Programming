@@ -435,7 +435,7 @@ let animal = Object.create(Animal.prototype);
 ```
 
 - ```Object.create(obj)``` creates a new object and sets ```obj``` as the new object's prototype.
-- By setting ```Animal.prototype``` as the 'prototype' of 'animal', it is assigning all of the attributes of ```Animal.prototype``` to 'animal'.
+- By setting ```Animal.prototype``` as the 'prototype' of 'animal', it is assigning all of the attributes of ```Animal.prototype``` to all instances of 'animal' (whether already created, or to be created).
 
 ```js
 function Animal() { }
@@ -452,4 +452,22 @@ let beagle = Object.create(Animal.prototype);
 
 duck.eat()                              // nom nom nom
 console.log(duck instanceof Animal);    // true
+```
+
+## Set the Child's Prototype to an Instance of the Parent
+
+- Previously, the first step for inheriting behavior from the supertype (parent) was discussed.
+- Now to set the prototype of the subtype (child).
+
+```js
+Bird.prototype = Object.create(Animal.prototype); // The subtype 'Bird' is now a 'child' of the supertype 'Animal' (parent)
+```
+
+- 'Bird' now includes all of the attributes of its parent 'Animal'.
+
+```js
+let duck = new Bird("Donald");
+
+duck.eat(); // nom nom nom
+console.log(duck instanceof Animal); // true
 ```
