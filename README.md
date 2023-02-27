@@ -303,3 +303,23 @@ Bird.prototype = {
 };
 ```
 
+## Understand Where an Object's Prototype Comes From
+
+- An object inherits its ```prototype``` directly from its constructor function that created the object (just like genes are inherited to children)
+  
+```js
+function Bird(name) {
+    this.name = name;
+}
+
+let duck = new Bird("Donale");
+```
+
+- 'duck' inherits its ```prototype``` from the 'bird' constructor function.
+- This relationship can be checked with the ```isPrototypeOf``` method
+
+```js
+Bird.prototype.isPrototypeOf(duck); // This would return 'true'
+```
+
+## 
