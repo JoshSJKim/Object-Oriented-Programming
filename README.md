@@ -377,3 +377,43 @@ Dog.prototype.isPrototypeOf(beagle); // true. 'beagle' is a subtype of Dog.proto
 
 Object.prototype.isPrototypeOf(Dog.prototype); // true Object.prototype is the supertype of both Dog.prototype and object 'beagle'
 ```
+
+## Use Inheritance So You Don't Repeat Yourself
+
+- There's a principle in programming known as DRY (Don't Repeat Yourself).
+- Repeated codes can be problematic because any change requires fixing code in multiple places.
+- This means more work and more room for errors.
+
+```js
+Bird.prototype = {
+    constructor: Bird,
+    describe: function() {
+        console.log("My name is " + this.name);
+    }
+};
+
+Dog.prototype = {
+    constructor: Dog,
+    describe: function() {
+        console.log("My name is " + this.name);
+    }
+};
+```
+
+- In the example above, the ```describe``` method is repeated in two places.
+- The code can be edited to eliminate redundancy by creating a supertype (parent) called 'Animal'.
+
+```js
+function Animal() { };
+
+Animal.prototype = {
+    constructor: Animal,
+    describe: function() {
+        console.log("My name is " + this.name);
+    }
+};
+```
+
+- Since 'Animal' includes the ```describe``` method, it can be removed from 'Bird' and 'Dog'.
+
+## 
