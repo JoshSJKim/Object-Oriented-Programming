@@ -416,4 +416,40 @@ Animal.prototype = {
 
 - Since 'Animal' includes the ```describe``` method, it can be removed from 'Bird' and 'Dog'.
 
-## 
+## Inherit Behaviors from a Supertype
+
+- Technique called 'inheritance' is used to reuse methods defined in a supertype inside its subtypes without having to define them again individually.
+- The first step is to make an instance of the 'supertype'.
+
+```js
+let animal = new Animal();
+```
+
+- This is the method that's been covered so far in terms of creating an object using the 'new' operator.
+- There are disadvantages of using this syntax for inheritance.
+
+Below is an alternative approach without the disadvantages.
+
+```js
+let animal = Object.create(Animal.prototype);
+```
+
+- ```Object.create(obj)``` creates a new object and sets ```obj``` as the new object's prototype.
+- By setting ```Animal.prototype``` as the 'prototype' of 'animal', it is assigning all of the attributes of ```Animal.prototype``` to 'animal'.
+
+```js
+function Animal() { }
+
+Animal.prototype = {
+    constructor: Animal,
+    eat: function() {
+        console.log("nom nom nom");
+    }
+};
+
+let duck = Object.create(Animal.prototype);
+let beagle = Object.create(Animal.prototype);
+
+duck.eat()                              // nom nom nom
+console.log(duck instanceof Animal);    // true
+```
