@@ -281,3 +281,25 @@ Bird.prototype = {
 };
 ```
 
+## Remember to Set the Constructor Property when Changing the Prototype
+
+- If the prototype is manually set to a new object, it erases the constructor property.
+- Remember to define the   ```constructor``` property when manually setting the prototype to a new object.
+
+```js
+function Dog(name) {
+    this.name = name;
+}
+
+Bird.prototype = {
+    constructor: Bird,  // define the constructor property
+    numLegs: 2,
+    eat: function() {
+        console.log("nom nom nom");
+    },
+    describe: function() {
+        console.log("My name is " + this.name);
+    }
+};
+```
+
