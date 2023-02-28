@@ -561,3 +561,40 @@ console.log(penguin.fly());
 // When method 'fly' is called in the new instance of Penguin object, it will display "Alas, this is a flightless bird."
 // If the override method is not defined, it will return " I am flying!"                         
 ```
+
+## Use a Mixin to Add Common Behavior Between Unrelated Objects
+
+- Up to now, behavior was shared through inheritance.
+- But there are cases where inheritance is not the best approach.
+- It does not work well for unrelated objects, such as 'Bird' and 'Airplane'.
+- They both fly, but they are not the same type.
+
+- Use ```mixin``` to use collection of functions between unrelated objects.
+
+```js
+let flyMixin = function(obj) {
+    obj.fly = function() {
+        console.log("Flying, wooosh!");
+    }
+};
+```
+
+- Once setup, 'flyMixin' will take any object and give it the 'fly' method
+
+```js
+let bird = {
+    name: "Donald",
+    numLegs: 2
+};
+
+let plane = {
+    model: "777",
+    numPassengers: 524,
+};
+
+flyMixin(bird);     // flyMixin() is now passed to both 'bird' and 'plane'
+flyMixin(plane);    // it then assigns the function 'fly' to both objects.
+
+bird.fly();    // both 'bird' and 'plane' will display "Flying, wooosh!"
+plane.fly();
+```
