@@ -537,3 +537,27 @@ let beagle = new Dog();
 beagle.eat();   // nom nom nom - inherited from Animal.prototype
 beagle.bark();  // Woof! - Added unique to Dog.prototype
 ```
+
+## Override Inherited Methods
+
+- You can override an inherited method, simply by adding the inherited method directly to the child prototype.
+
+```js
+function Bird() { }                 // create a 'Bird' object
+Bird.prototype.fly = function() {   // this 'Bird' object has a method 'fly', which returns a string
+    return "I am flying!";
+};
+
+function Penguin() { }              // create a 'Penguin' object
+Penguin.prototype = Object.create(Bird.prototype);  // Have the 'Penguin' object inherit the method defined in 'Bird' prototype
+Penguin.prototype.constructor = Penguin;            // reset the 'Penguin' constructor to 'Penguin'
+
+Penguin.prototype.fly = function() {                // Override the method 'fly' by re-defining it in 'Penguin' prototype
+    return "Alas, this is a flightless bird.";      // the return string is unique to Penguin.prototype
+}
+
+let penguin = new Penguin();  // create a new instance of a Penguin object
+console.log(penguin.fly());   
+// When method 'fly' is called in the new instance of Penguin object, it will display "Alas, this is a flightless bird."
+// If the override method is not defined, it will return " I am flying!"                         
+```
