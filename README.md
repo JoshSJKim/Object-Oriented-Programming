@@ -648,4 +648,88 @@ ducky.getHatchedEggCount();
 - Note that the function has no name and it is not stored in a variable.
 - The parentheses at the end of the function expression causes immediate execution.
 - Immediately Invoked Function Expression (IIFE)
-- 
+
+## Use an IIFE to Create a Module
+
+- IIFE is often used to group related functionality into a single object, or ```module```.
+  
+```js
+let isCuteMixin = function(obj) {
+  obj.isCute = function() {
+    return true;
+  };
+};
+let singMixin = function(obj) {
+  obj.sing = function() {
+    console.log("Singing to an awesome tune");
+  };
+};
+```
+
+- Shown above are two Mixins, which can be grouped into a module as shown below.
+
+```js
+let funModule = (function () {
+    return {
+        isCuteMixin: function(obj) {
+            obj.isCute = function () {
+                return true;
+            };
+        },
+        singMixin: function(obj) {
+            obj.sing = function() {
+                console.log("Singing to an awesome tune");
+            };
+        }
+    }
+})();
+
+function Person () { }
+let rosie = new Person();
+
+funModule.isCuteMixin(rosie);
+console.log(rosie.isCute()); // true
+
+funModule.singMixin(rosie);
+rosie.sing(); // Singing to an awesome tune
+```
+
+Another example
+
+```js
+function glideMixin(obj) {
+  obj.glide = function() {
+    console.log("Gliding on the water");
+  };
+}
+function flyMixin(obj) {
+  obj.fly = function() {
+    console.log("Flying, wooosh!");
+  };
+}
+
+function Bird() { }
+
+// group into a module
+
+let motionModule = (function () {
+  return {
+    glideMixin: function(obj) {
+      obj.glide = function() {
+        console.log("Gliding on the water");
+      };
+    },
+    flyMixin: function(obj) {
+      obj.fly = function() {
+        console.log("Flying, wooosh!");
+      };
+    }
+  }
+})();
+
+// Example of module in use
+let duck = new Bird();
+
+motionModule.glideMixin(duck);
+duck.glide; // Gliding on the water
+```
