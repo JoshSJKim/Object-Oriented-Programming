@@ -598,3 +598,38 @@ flyMixin(plane);    // it then assigns the function 'fly' to both objects.
 bird.fly();    // both 'bird' and 'plane' will display "Flying, wooosh!"
 plane.fly();
 ```
+
+## Use Closure to Protect Properties Within an Object from Being Modified Externally
+
+- In the previous challenge, the 'name' property of the 'bird' object was public.
+- It is considered public because it can be accessed and modified outside of bird's definition.
+  
+```js
+let bird = {
+    name: "Donald",
+    numLegs: 2
+};
+
+bird.name = "Duffy"; // change name of bird to "Duffy"
+```
+
+- This means that nay part of the code can easily modify the name of bird to any other value.
+- This can cause numerous problems if handling passwords and bank accounts, etc.
+  
+- The simplest way to convert public property to private is by creating a variable within the constructor function.
+- This changes the scope of that variable to be within the construction function, instead of leaving it available on a global scope.
+- Doing so will allow the variable to be accessed and modified by methods that are also defined in the constructor function.
+
+```js
+function Bird() { 
+  let hatchedEgg = 10;
+
+  this.getHatchedEggCount = function() { // Here, getHatchedEggCount is a privileged method. Meaning it has access to the private variable hatchedEgg.
+    return hatchedEgg;                   // This is possible because hatchedEgg is declared in the same context as getHatchedEggCount.
+  };
+}
+let ducky = new Bird();
+ducky.getHatchedEggCount();
+```
+
+- In JS, a function always has access to the context in which it was created. This is called ```closure```.
