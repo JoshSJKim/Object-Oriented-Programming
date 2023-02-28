@@ -633,3 +633,19 @@ ducky.getHatchedEggCount();
 ```
 
 - In JS, a function always has access to the context in which it was created. This is called ```closure```.
+
+## Understand the Immediately Invoked Function Expression (IIFE)
+
+- A common pattern in JavaScript is to execute a function as soon as it is declared.
+
+```js
+(function () {
+    console.log("This is an IIFE");
+})();       // This will immediately display the string in the console.
+```
+
+- This is an anonymous function expression that executes immediately and outputs "This is an IIFE" in the console.
+- Note that the function has no name and it is not stored in a variable.
+- The parentheses at the end of the function expression causes immediate execution.
+- Immediately Invoked Function Expression (IIFE)
+- 
