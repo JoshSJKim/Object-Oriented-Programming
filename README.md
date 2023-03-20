@@ -2,6 +2,24 @@
 
 Basic principles of OOP
 
+## Create a Basic JavaScript Object
+
+- Properties of objects define what makes up that object
+- Similar objects share same properties, but may have different values for those properties.
+
+- Objects in JavaScript are used to model real-world objects.
+- Assign properties and values to define that objects
+
+```js
+let dog = {
+    name: "Spot",
+    numLegs: 4
+};
+```
+
+## Use Dot Notation to Access the Properties of an Object
+
+
 ## Use of 'this' Keyword
 
 - You can use dot notation to access properties in an object.
