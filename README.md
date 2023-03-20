@@ -106,7 +106,7 @@ let duck = {
 For example
 
 ```js
-function bird() {
+function Bird() {
     this.name = "Albert";
     this.color = "blue";
     this.numLegs = 2; 
@@ -182,6 +182,9 @@ cardinal.name;
 cardinal.color;
 cardinal.numLegs;
 ```
+
+- This way, it is more flexible and efficient for managing large volumes of data.
+- It is possible to define the properties for each object at the time of creating the object.
 
 ## Verify an Object's Constructor with instanceof
 
