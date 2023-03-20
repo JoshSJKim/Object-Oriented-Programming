@@ -31,6 +31,26 @@ console.log(dog.name);      // Spot
 console.log(dog.numLegs);   // 4
 ```
 
+## Create a Method on an Object
+
+- Objects can have a special type of property called a `Method`
+- `Methods` are properties that are functions. It add different behavior to an object
+
+```js
+let dog = {
+    name: "Spot",
+    numLegs: 4,
+    sayLegs: function() {
+        return "This dog has " + dog.numLegs + " legs.";
+    }
+};
+
+console.log(dog.sayLegs());     // This dog has 4 legs
+```
+
+- `dog.sayLegs` will call the function assigned to the method (property) `sayLegs`
+- Note the syntax when calling the method
+- `object.method()`
 
 
 ## Use of 'this' Keyword
