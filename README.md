@@ -19,6 +19,19 @@ let dog = {
 
 ## Use Dot Notation to Access the Properties of an Object
 
+- Use dot notation, followed by the name of the `property` to access the value of that `property`
+
+```js
+let dog = {
+    name: "Spot",
+    numLegs: 4
+};
+
+console.log(dog.name);      // Spot 
+console.log(dog.numLegs);   // 4
+```
+
+
 
 ## Use of 'this' Keyword
 
