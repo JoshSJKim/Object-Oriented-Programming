@@ -189,7 +189,7 @@ cardinal.numLegs;
 ## Verify an Object's Constructor with instanceof
 
 - When a constructor function creates an object, the object is called an 'instance' of the constructor.
-- Use the ```instanceof``` operator to verify whether an object was created with constructor.
+- Use the ```instanceof``` operator to verify whether an object was created with the constructor.
 - It will return true or false based on the comparison result.
 
 ```js
@@ -307,7 +307,7 @@ function joinDogFraternity(candidate) {
 
 ## Change the Prototype to a New Object
 
-- It can also become inefficient to add properties to ```prototype``` individually.
+- It can also become inefficient to add each prototype property to ```prototype``` individually.
 
 ```js
 Bird.prototype.numLegs = 2;
@@ -378,7 +378,7 @@ Bird.prototype.isPrototypeOf(duck); // This would return 'true'
 
 ## Understand the Prototype Chain
 
-- In JavaScript, every object has an internal property called [[Prototype]] that points to another object, called its prototype.
+- In JavaScript, every object has an internal property called `Prototype` that points to another object, called its prototype.
 - The prototype is a blueprint that defines properties and methods that the object can access and use.
 - When you access a property or method on an object, JavaScript first looks at the object itself to see if it has the property or method.
 - If it does not find it, it looks at the object's prototype, and so on up the prototype chain, until it reaches the root object Object.prototype.
@@ -398,7 +398,9 @@ Animal.prototype.speak = function() {
 function Dog() {
 }
 
-Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype); 
+// Create a new object that inherits from 'Animal.prototype' and sets it as the prototype for 'Dog'.
+// Now 'Dog' inherits properties and methods from 'Animal'
 
 Dog.prototype.bark = function() {
   console.log('The dog barks.');
